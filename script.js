@@ -1,13 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var copyBtn = document.querySelector("#copy");
 
-var lowerOptions = "abcdefghijklmnopqrstuvwxyz";
-var upperOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numericOptions = "0123456789";
-var specialOptions = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+let lowerOptions = "abcdefghijklmnopqrstuvwxyz";
+let upperOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let numericOptions = "0123456789";
+let specialOptions = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 let optionsChoices = [];
 let text = "";
 
+// Prompts user for password criteria and generats the password
 function generatePassword() {
   console.log("Generate the password")
   // Length Criteria
@@ -74,9 +76,7 @@ function generatePassword() {
   }
 
   // For loop that generates each character for password
-  // let text = "";
   for (let i = 0; i < passLength; i++) {
-    //array [lowercase, numbers, special]
     let optionsArray = optionsChoices[Math.floor(Math.random() * optionsChoices.length)];
     let passSelection = optionsArray.charAt(Math.floor(Math.random() * optionsArray.length));
     text += passSelection;
@@ -92,5 +92,14 @@ function writePassword() {
   passwordText.textContent = text;
 }
 
+// Button click to start generating new password
 generateBtn.addEventListener("click", writePassword);
 
+//Button click to copy the generated password
+copyBtn.addEventListener("click", function () {
+  console.log ("CopyButton Pressed");
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Password copied to clipboard.");
+});
