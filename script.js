@@ -1,4 +1,4 @@
-// Assignment Code
+// Define global veriables
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy");
 
